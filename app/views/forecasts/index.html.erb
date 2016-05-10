@@ -1,0 +1,31 @@
+<h1>Weather forecast: <%= "#{@location_and_city}" %></h1>
+
+
+
+<table>
+<% @forecasts.each do |forecast| %>
+  <tr>
+    <td><%= forecast["date"] %></td>
+    <td><%= forecast["high"] %></td>
+    <td><%= forecast["low"] %></td>
+    <td><%= forecast["text"] %></td>
+  </tr>
+<% end %>
+
+</table>
+
+
+<%= form_tag '/forecasts', method: :get do %>
+
+  <div>
+    <%= label_tag :city %>
+    <%= text_field_tag :city %>
+  </div>
+
+  <div>
+    <%= label_tag :state %>
+    <%= text_field_tag :state %>
+  </div>
+
+  <%= submit_tag "Search" %>
+<% end %>
